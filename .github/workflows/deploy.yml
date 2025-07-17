@@ -1,0 +1,54 @@
+name: Build and Deploy Vite React App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout main branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensure full history for branch operations
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build the app
+        run: npm run build
+
+      - name: Deploy to public branch
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          # Create a temporary directory and copy the build files
+          mkdir temp-deploy
+          cp -R dist/* temp-deploy/
+
+          # Check if public branch exists remotely
+          if git ls-remote --exit-code --heads origin public; then
+            git fetch origin public
+            git switch --force-create public origin/public
+          else
+            git switch --orphan public
+          fi
+
+          # Clean the branch and move new files
+          git rm -rf . --ignore-unmatch
+          cp -r temp-deploy/* .
+          rm -rf temp-deploy
+
+          # Commit and push changes
+          git add .
+          git commit -m "Deploy from main: ${GITHUB_SHA}" || echo "No changes to commit"
+          git push origin public --force
