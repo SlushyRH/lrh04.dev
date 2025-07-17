@@ -1,7 +1,7 @@
 import { Link, useLocation } from "react-router";
 import { projects } from "../projects/Index";
 
-import { FaClock, FaDownload, FaUsers } from "react-icons/fa";
+import { FaClock, FaUsers, FaDownload, FaEye, FaStar } from "react-icons/fa";
 import type { IconType } from "react-icons";
 
 function ProjectList({ showOnlyPinned = false }) {
@@ -30,7 +30,7 @@ function ProjectCard({ project }: { project: any }) {
   const year = new Date(project.releaseDate).getFullYear();
 
   return (
-    <Link to={{ pathname: `${slug}`}} className="w-full">
+    <Link to={{ pathname: `${slug}` }} className="w-full">
       <div className="rounded-md overflow-hidden relative flex flex-col bg-secondary hover:cursor-pointer">
         <div className="w-full h-64">
           {cover.mediaType !== "video" ? (
@@ -57,6 +57,9 @@ function ProjectCard({ project }: { project: any }) {
             <div className="flex gap-3 text-sm text-texxt mt-1">
               {project.teamSize && <InfoItem Icon={FaUsers} title="Team Size" text={project.teamSize} />}
               {project.timeFrame && <InfoItem Icon={FaClock} title="Time Frame" text={project.timeFrame} />}
+              {project.metrics.views && <InfoItem Icon={FaEye} title="Downloads" text={project.metrics.views} />}
+              {project.metrics.downloads && <InfoItem Icon={FaDownload} title="Downloads" text={project.metrics.downloads} />}
+              {project.metrics.stars && <InfoItem Icon={FaStar} title="Downloads" text={project.metrics.stars} />}
             </div>
           </div>
 
