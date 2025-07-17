@@ -10,6 +10,12 @@
   --color-text: #FFFFFF;
 }
 
+@layer utilities {
+  .main-padding {
+    @apply px-[15px] md:px-[15%] xl:px-[20%] pt-10;
+  }
+}
+
 html {
   font-family: "Montserrat", sans-serif;
   overscroll-behavior: none;
