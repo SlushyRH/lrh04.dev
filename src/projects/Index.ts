@@ -1,10 +1,10 @@
-const modules = import.meta.glob("./**/*.tsx", { eager: true });
+const modules = import.meta.glob("./**/!(_)*.tsx", { eager: true });
 
 export const projects: Record<string, { path: string, data: any }> = {};
 
 for (const filePath in modules) {
-  const mod = modules[filePath] as { data: any };
-  const slug = mod.data.slug;
+  const mod = modules[filePath] as { metadata: any };
+  const slug = mod.metadata.slug;
 
   if (!slug) {
     continue;
@@ -12,6 +12,6 @@ for (const filePath in modules) {
 
   projects[slug] = {
     path: slug,
-    data: mod.data,
+    data: mod.metadata,
   };
 }
