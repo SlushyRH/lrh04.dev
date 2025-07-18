@@ -15,7 +15,7 @@
 
 @layer utilities {
   .main-padding {
-    @apply px-[15px] md:px-[15%] xl:px-[20%] pt-10;
+    @apply px-[15px] md:px-[15%] xl:px-[25%] pt-10;
   }
 }
 

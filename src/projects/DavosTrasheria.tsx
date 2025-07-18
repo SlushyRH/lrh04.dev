@@ -1,19 +1,24 @@
-import { FaItchIo, FaUnity, FaWindows } from "react-icons/fa";
+import type { Metadata, Cover } from "./_types";
+import { Title, Paragraph } from "../components/Generic";
+
+import { FaGitAlt, FaItchIo, FaUnity, FaWindows } from "react-icons/fa";
 
 function Content() {
   return (
     <div>
-      Content Goes Here
+      <Title>Teamwork</Title>
+      <Paragraph>
+        talk about the process 
+      </Paragraph>
+
+      <Title>Steam</Title>
     </div>
   );
 }
 
 const techStack = [ // Unity, C++, etc
+  { title: "Git", icon: FaGitAlt },
   { title: "Unity", icon: FaUnity },
-]
-
-const platforms = [  // Windows, Web, etc
-  { title: "Windows", icon: FaWindows },
 ]
 
 const links = [  // Steam, Github, etc
@@ -26,7 +31,7 @@ const metrics = {
   views: null,
 }
 
-const cover = {
+const cover: Cover = {
   url: "https://img.itch.zone/aW1hZ2UvMjYzNDY3Ni8xNTczNTE5Ny5qcGc=/original/I0Vamd.jpg", // cover link
   mediaType: "image" // image or video
 }
@@ -50,7 +55,7 @@ const awards = [
   { title: "", by: "", year: "" },
 ]
 
-export const metadata = {
+export const metadata: Metadata = {
   slug: "davos-trasheria",
   pin: true, // pin to main page
   Content: Content,
@@ -63,7 +68,6 @@ export const metadata = {
   role: "Programmer",
   techStack: techStack,
   links: links,
-  platforms: platforms,
   metrics: metrics,
   awards: awards,
   cover: cover,

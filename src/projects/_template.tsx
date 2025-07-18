@@ -1,3 +1,6 @@
+import type { Metadata, Cover } from "./_types";
+import { Title, Paragraph } from "../components/Generic";
+
 function Content() {
   return (
     <div>
@@ -6,53 +9,53 @@ function Content() {
   );
 }
 
-const techStack = [ // Unity, C++, etc
+const techStack = [
   { title: "", icon: null },
-]
+];
 
-const platforms = [  // Windows, Web, etc
+const platforms = [
   { title: "", icon: null },
-]
+];
 
-const links = [  // Steam, Github, etc
+const links = [
   { icon: null, title: "", url: "" },
-]
+];
 
 const metrics = {
   stars: null,
   downloads: null,
   views: null,
-}
+};
 
-const cover = {
-  url: "", // cover link
-  mediaType: "" // image or video
-}
+const cover: Cover = {
+  url: "",
+  mediaType: "image", // image or video
+};
 
-const trailers = [ // youtube link
-  { link: "" }, 
-]
+const trailers = [
+  { link: "" },
+];
 
-const screenshots = [ // url for each image
+const screenshots = [
   { img: "" },
-]
+];
 
-const tags = [ // for search bar
+const tags = [
   "",
-]
+];
 
 const awards = [
   { title: "", by: "", year: "" },
-]
+];
 
-export const metadata = {
+export const metadata: Metadata = {
   slug: "",
-  pin: false, // pin to main page
+  pin: false,
   Content: Content,
 
   title: "",
   description: "",
-  releaseDate: "00/00/0000", // dd/mm/yyyy
+  releaseDate: "00/00/0000",
   teamSize: 0,
   timeFrame: "",
   role: "",
