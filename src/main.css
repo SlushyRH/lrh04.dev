@@ -54,7 +54,7 @@ html {
   background-color: rgba(150, 150, 150, 0.6);
 }
 
-/* Firefox */
+/* firefox */
 .show-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(100, 100, 100, 0.4) transparent;

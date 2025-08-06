@@ -1,17 +1,37 @@
 import type { Metadata, Cover } from "./_types";
 import { Title, Paragraph } from "../components/Generic";
+import { CodeBlock } from "../components/CodeBlock";
 
 import { FaGitAlt, FaItchIo, FaUnity, FaWindows } from "react-icons/fa";
+
+const code = `while (true)
+{
+  currentMaterial.color = GetRandomColour();
+
+  float waitTime = Random.Range(randomColourChangeDuration.x, randomColourChangeDuration.y);
+  await Awaitable.WaitForSecondsAsync(waitTime);
+}`;
 
 function Content() {
   return (
     <div>
       <Title>Teamwork</Title>
       <Paragraph>
-        talk about the process 
+        talk about the process of working in a team
+      </Paragraph>
+      
+      <Title>Technologies Used</Title>
+      <Paragraph>
+        talk about the tech 
+      </Paragraph>
+
+      <Title>Coding Structure</Title>
+      <Paragraph>
+        talk about the structure and how the codebase works
       </Paragraph>
 
       <Title>Steam</Title>
+      <CodeBlock language="csharp" code={code} />
     </div>
   );
 }

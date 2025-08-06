@@ -17,6 +17,7 @@ const RootLayout = () => (
   <div className="flex flex-col min-h-screen">
     <ScrollToTop />
     <Header />
+    
     <main className="flex-grow main-padding">
       <Outlet />
     </main>
