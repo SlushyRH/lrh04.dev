@@ -9,7 +9,7 @@ import Footer from './components/Footer';
 import PageNotFound from './pages/PageNotFound';
 import Home from './pages/Home';
 import Projects from './pages/Projects';
-import About from './pages/About';
+//import About from './pages/About';
 import Project from './pages/Project';
 
 const RootLayout = () => (
