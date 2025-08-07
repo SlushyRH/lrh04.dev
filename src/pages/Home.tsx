@@ -1,9 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { FaMapPin } from "react-icons/fa";
+import type { IconType } from "react-icons";
 
 import { ProgrammingLanguages, ProgramsLanguages, Work } from "../Data";
 import ProjectList from "../components/ProjectCards";
 import Experience from "../components/Experience";
+
+interface TechItem {
+  name: string;
+  icon: IconType;
+}
+
+interface ScrollingTechStackProps {
+  tech: TechItem[];
+  repeat?: number;
+}
 
 function Home() {
   return (
@@ -45,12 +56,12 @@ function Intro() {
   );
 }
 
-function ScrollingTechStack({ tech, repeat = 3}) {
+function ScrollingTechStack({ tech, repeat = 3}: ScrollingTechStackProps) {
   const techStack = Array(repeat).fill(tech).flat();
   const autoScrollSpeed = 0.5;
 
-  const containerRef = useRef(null);
-  const trackRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
   const posRef = useRef(0);
 
   const [isPaused, setIsPaused] = useState(false);
@@ -63,11 +74,11 @@ function ScrollingTechStack({ tech, repeat = 3}) {
       return;
     }
 
-    let frameId;
+    let frameId: number;
     let lastTime = performance.now();
     const scrollWidth = track.scrollWidth / 3;
 
-    const animate = (time) => {
+    const animate = (time: number) => {
       const deltaTime = time - lastTime;
       lastTime = time;
 
@@ -100,7 +111,7 @@ function ScrollingTechStack({ tech, repeat = 3}) {
     let startX = 0;
     let startPos = 0;
 
-    const onStart = (clientX) => {
+    const onStart = (clientX: number) => {
       dragging = true;
       setIsDragging(true);
       setIsPaused(true);
@@ -109,7 +120,7 @@ function ScrollingTechStack({ tech, repeat = 3}) {
       startPos = posRef.current;
     };
 
-    const onMove = (clientX) => {
+    const onMove = (clientX: number) => {
       if (!dragging) return;
 
       const deltaX = clientX - startX;
@@ -126,13 +137,13 @@ function ScrollingTechStack({ tech, repeat = 3}) {
     };
 
     // Mouse events
-    const onMouseDown = (e) => onStart(e.clientX);
-    const onMouseMove = (e) => onMove(e.clientX);
+    const onMouseDown = (e: MouseEvent) => onStart(e.clientX);
+    const onMouseMove = (e: MouseEvent) => onMove(e.clientX);
     const onMouseUp = onEnd;
 
     // Touch events
-    const onTouchStart = (e) => onStart(e.touches[0].clientX);
-    const onTouchMove = (e) => onMove(e.touches[0].clientX);
+    const onTouchStart = (e: TouchEvent) => onStart(e.touches[0].clientX);
+    const onTouchMove = (e: TouchEvent) => onMove(e.touches[0].clientX);
     const onTouchEnd = onEnd;
 
     container.addEventListener("mousedown", onMouseDown);

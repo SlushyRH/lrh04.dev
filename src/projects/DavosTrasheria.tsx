@@ -2,7 +2,7 @@ import type { Metadata, Cover } from "./_types";
 import { Title, Paragraph } from "../components/Generic";
 import { CodeBlock } from "../components/CodeBlock";
 
-import { FaGitAlt, FaItchIo, FaUnity, FaWindows } from "react-icons/fa";
+import { FaGitAlt, FaItchIo, FaUnity } from "react-icons/fa";
 
 const code = `while (true)
 {
@@ -39,6 +39,10 @@ function Content() {
 const techStack = [ // Unity, C++, etc
   { title: "Git", icon: FaGitAlt },
   { title: "Unity", icon: FaUnity },
+]
+
+const platforms = [ // Windows, Mac, etc
+  { title: "Windows", icon: null },
 ]
 
 const links = [  // Steam, Github, etc
@@ -87,6 +91,7 @@ export const metadata: Metadata = {
   timeFrame: "2 Weeks",
   role: "Programmer",
   techStack: techStack,
+  platforms: platforms,
   links: links,
   metrics: metrics,
   awards: awards,

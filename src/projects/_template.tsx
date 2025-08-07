@@ -1,5 +1,4 @@
 import type { Metadata, Cover } from "./_types";
-import { Title, Paragraph } from "../components/Generic";
 
 function Content() {
   return (

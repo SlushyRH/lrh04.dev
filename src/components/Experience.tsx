@@ -1,4 +1,17 @@
-function Experience({ title, experience }) {
+interface ExperienceItem {
+  title: string;
+  startdate: string;
+  endDate?: string;
+  description: string;
+  url?: string;
+}
+
+interface ExperienceProps {
+  title: string;
+  experience: ExperienceItem[];
+}
+
+function Experience({ title, experience }: ExperienceProps) {
   return (
     <div>
       <p className="text-4xl font-bold text-white">{title}</p>
@@ -13,7 +26,12 @@ function Experience({ title, experience }) {
   );
 }
 
-function Posting({ item, showLine }) {
+interface PostingProps {
+  item: ExperienceItem;
+  showLine: boolean;
+}
+
+function Posting({ item, showLine }: PostingProps) {
   return (
     <div className="relative pl-10 py-2">
       {/* Vertical line */}

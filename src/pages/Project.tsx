@@ -5,7 +5,7 @@ import ReactPlayer from "react-player";
 import { projects } from "../projects/Index";
 import { FaCalendarAlt, FaChevronLeft, FaChevronRight, FaClock, FaDownload, FaEye, FaStar, FaUser, FaUsers } from "react-icons/fa";
 
-import type { Metadata } from "../projects/_types";
+import type { Metadata, Tech, Link } from "../projects/_types";
 import type { IconType } from "react-icons";
 
 function Project() {
@@ -40,18 +40,21 @@ function Project() {
 
               {project.links && project.links.length > 0 && (
                 <div className="mt-4 flex flex-wrap gap-2">
-                  {project.links.map((link: any, i: number) => (
-                    <a
-                      key={i}
-                      href={link.url}
-                      title={link.title}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-accent hover:text-accent-hover rounded-sm transition"
-                    >
-                      <link.icon size={24} />
-                    </a>
-                  ))}
+                  {project.links.map((link: Link, i: number) => {
+                    const IconComponent = link.icon;
+                    return (
+                      <a
+                        key={i}
+                        href={link.url}
+                        title={link.title}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-2 text-accent hover:text-accent-hover rounded-sm transition"
+                      >
+                        {IconComponent && <IconComponent size={24} />}
+                      </a>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -78,13 +81,13 @@ function Project() {
   );
 }
 
-function MediaCarousel({ project }) {
+function MediaCarousel({ project }: { project: Metadata }) {
   const trailers = project.trailers || [];
   const screenshots = project.screenshots || [];
 
   const slides = [
-    ...trailers.map((trailer) => ({ type: "trailer", data: trailer })),
-    ...screenshots.map((screenshot) => ({ type: "screenshot", data: screenshot })),
+    ...trailers.map((trailer: any) => ({ type: "trailer", data: trailer })),
+    ...screenshots.map((screenshot: any) => ({ type: "screenshot", data: screenshot })),
   ];
 
   if (slides.length === 0) {
@@ -182,7 +185,7 @@ function MediaCarousel({ project }) {
   );
 }
 
-function InfoItem({ Icon, text, value }) {
+function InfoItem({ Icon, text, value }: { Icon: IconType, text: string, value: string | number | null }) {
   if (!value) {
     return null;
   }
@@ -195,15 +198,18 @@ function InfoItem({ Icon, text, value }) {
   );
 };
 
-function TechStack({ techStack }) {
+function TechStack({ techStack }: { techStack: Tech[] }) {
   return (
     <div className="flex items-start gap-3">
-      {techStack.map((tech: any, index: number) => (
-        <div key={index} className="flex items-center gap-2 min-w-max p-2 bg-secondary rounded-md text-text" title={tech.title}>
-          <tech.icon className="text-accent" size={20} />
-          <span className="text-sm font-medium">{tech.title}</span>
-        </div>
-      ))}
+      {techStack.map((tech: Tech, index: number) => {
+        const IconComponent = tech.icon;
+        return (
+          <div key={index} className="flex items-center gap-2 min-w-max p-2 bg-secondary rounded-md text-text" title={tech.title}>
+            {IconComponent && <IconComponent className="text-accent" size={20} />}
+            <span className="text-sm font-medium">{tech.title}</span>
+          </div>
+        );
+      })}
     </div>
   );
 }
