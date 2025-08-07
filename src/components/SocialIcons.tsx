@@ -13,7 +13,7 @@ function SocialIcons() {
       <Icon Icon={FaItchIo} title="Itch" url="https://slushyrh.itch.io" />
       <Icon Icon={FaGithub} title="Github" url="https://github.com/slushyrh" />
       <Icon Icon={FaLinkedin} title="Linkedin" url="https://linkedin.com/in/lrh04/" />
-      <Icon Icon={FaEnvelope} title="Mail" url="mailto:msg@lrh04.dev" />
+      <Icon Icon={FaEnvelope} title="Mail" url="mailto:lachlan@lrh04.dev" />
     </div>
   );
 }
