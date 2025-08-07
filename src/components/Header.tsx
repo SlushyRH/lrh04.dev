@@ -18,7 +18,7 @@ function Header() {
 			<nav className="order-2 md:order-none w-full flex justify-center space-x-6 text-base font-medium text-muted-foreground">
         <NavBarTitle title="Home" path="/" />
         <NavBarTitle title="Projects" path="/projects" />
-        <NavBarTitle title="About" path="/about" />
+        {/*<NavBarTitle title="About" path="/about" /> */}
       </nav>
       
 			<div className="order-3 md:order-none w-full flex justify-center md:justify-end space-x-4 text-2xl">
